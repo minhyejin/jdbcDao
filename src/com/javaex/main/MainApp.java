@@ -11,11 +11,11 @@ public class MainApp {
 
 	public static void main(String[] args) {
 		
-		AuthorVo vo = new AuthorVo();
-		BookVo vo1 = new BookVo();
-		AuthorDao aDao = new AuthorDao();
-		BookDao bDao = new BookDao();
+		AuthorVo vo1 = new AuthorVo();
+		BookVo vo = new BookVo();
 		
+		BookDao bDao = new BookDao ();
+		AuthorDao aDao = new AuthorDao();
 		List<AuthorVo> authorList = aDao.selectAuthorList();
 		List<BookVo> BookList = bDao.selectBookList();
 		

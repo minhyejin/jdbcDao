@@ -14,7 +14,7 @@ import com.javaex.vo.BookVo;
 public class BookDao {
 
 	
-	public void insertBook(BookVo vo1) {
+	public void insertBook(BookVo vo) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -32,11 +32,11 @@ public class BookDao {
 		    String query = "insert into book values(seq_book_id.nextval, ? , ? , ? , ? )";
 		    pstmt = conn.prepareStatement(query);
 		    
-		    pstmt.setInt(1,vo1.getBookId());
-			pstmt.setString(2,vo1.getTitle());
-			pstmt.setString(3, vo1.getPubs());
-			pstmt.setString(4, vo1.getPub_date());
-			pstmt.setInt(4, vo1.getAuthorId());
+		    pstmt.setInt(1,vo.getBookId());
+			pstmt.setString(2,vo.getTitle());
+			pstmt.setString(3, vo.getPubs());
+			pstmt.setString(4, vo.getPub_date());
+			pstmt.setInt(4, vo.getAuthorId());
 			
 			int count = pstmt.executeUpdate();
 		    // 4.결과처리
@@ -89,7 +89,7 @@ public class BookDao {
 					    // 4.결과처리
 					    while(rs.next()) {
 					    	
-					    	BookVo vo1 = new BookVo();//실제 데이타는 디비안에 있으니까 디비에서 조회해야함 
+					    	BookVo vo = new BookVo();//실제 데이타는 디비안에 있으니까 디비에서 조회해야함 
 					    	
 					    int BookId = rs.getInt("book_id");
 					    String title = rs.getString("title");
@@ -97,14 +97,14 @@ public class BookDao {
 					    String pubDate = rs.getString("pub_date");
 					    int authorId = rs.getInt("author_id");
 					    
-					    vo1.setBookId(BookId);
-					    vo1.setTitle(title);
-					    vo1.setPubs(pubs);//메모리에만 넣은거니까 add해줘야함 
-					    vo1.setPub_date(pubDate);
-					    vo1.setAuthorId(authorId);
+					    vo.setBookId(BookId);
+					    vo.setTitle(title);
+					    vo.setPubs(pubs);//메모리에만 넣은거니까 add해줘야함 
+					    vo.setPub_date(pubDate);
+					    vo.setAuthorId(authorId);
 					    
-					    BookList.add(vo1);
-					    
+					    BookList.add(vo);
+					   
 					    
 					   } 
 					    
@@ -132,8 +132,7 @@ public class BookDao {
 					}
 
 					return BookList;
-		
-		
+			
 		
 	}
 }
