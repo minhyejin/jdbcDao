@@ -80,7 +80,7 @@ public class BookDao {
 					    String query = " select b.book_id , b.title , b.pubs , "
 					    		+ "to_char(b.pub_date,'YYYY/MM/DD') pub_date , "
 					    		+ "b.author_id , a.author_name , a.author_desc " + 
-					    		"  from book b, author a "  + " where a.author_id = b.author_id ";
+					    		"  from book b, author a "  + " where b.author_id = a.author_id ";
 					    pstmt = conn.prepareStatement(query);
 					    rs = pstmt.executeQuery();
 					    
@@ -97,7 +97,7 @@ public class BookDao {
 					    String pubDate = rs.getString("pub_date");
 					    int authorId = rs.getInt("author_id");
 					    
-					    vo1.setBookId(authorId);
+					    vo1.setBookId(BookId);
 					    vo1.setTitle(title);
 					    vo1.setPubs(pubs);//메모리에만 넣은거니까 add해줘야함 
 					    vo1.setPub_date(pubDate);

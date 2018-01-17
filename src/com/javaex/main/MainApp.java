@@ -16,15 +16,14 @@ public class MainApp {
 		AuthorDao aDao = new AuthorDao();
 		BookDao bDao = new BookDao();
 		
-		aDao.insertAuthor(vo);
-		bDao.insertBook(vo1);
-		
 		List<AuthorVo> authorList = aDao.selectAuthorList();
 		List<BookVo> BookList = bDao.selectBookList();
 		
 		for( AuthorVo aDao1 : authorList ) {
 			System.out.println(aDao1);
 		}
+		System.out.println("==============================================================");
+		
 		for( BookVo bDao1 : BookList) {
 			System.out.println(bDao1);
 		}
